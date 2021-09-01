@@ -1,5 +1,5 @@
 {
-  "name": "less-bundle-promise",
+  "name": "@ad2302/less-bundle-promise",
   "version": "1.0.7",
   "description": "A package bundler for Less",
   "author": {
@@ -22,12 +22,14 @@
     "type": "git",
     "url": "git://github.com/mzohaibqc/less-bundle-promise"
   },
-  "main": "build/index.js",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "homepage": "https://github.com/mzohaibqc/less-bundle-promise",
   "engines": {
     "node": ">=0.10.0"
   },
-  "dependencies": {},
   "devDependencies": {
     "ts-loader": "^4.2.0",
     "typescript": "^2.8.1"
@@ -36,8 +38,6 @@
     "url": "https://github.com/mzohaibqc/less-bundle-promise/issues"
   },
   "scripts": {
-    "build": "tsc --lib es2015,dom --outDir build src/index.ts",
-    "predeploy": "cp package.json build/package.json && cp README.md build/README.md",
-    "deploy": "npm publish"
+    "build": "tsc --lib es2015,dom --outDir dist src/index.ts"
   }
 }

@@ -1,2 +1,2 @@
-﻿import compress = require('./lib/compressor');
+﻿import compress = require('./compressor');
 export = compress;
