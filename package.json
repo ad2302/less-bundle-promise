@@ -39,5 +39,8 @@
   },
   "scripts": {
     "build": "tsc --lib es2015,dom --outDir dist src/index.ts"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
