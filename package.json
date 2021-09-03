@@ -3,8 +3,8 @@
   "version": "1.0.7",
   "description": "A package bundler for Less",
   "author": {
-    "name": "mzohaibqc",
-    "url": "https://github.com/mzohaibqc/less-bundle-promise"
+    "name": "ad2302",
+    "url": "https://github.com/ad2302/less-bundle-promise"
   },
   "keywords": [
     "less",
@@ -15,18 +15,18 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/mzohaibqc/less-bundle-promise/blob/master/LICENSE"
+      "url": "https://github.com/ad2302/less-bundle-promise/blob/master/LICENSE"
     }
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/mzohaibqc/less-bundle-promise"
+    "url": "git://github.com/ad2302/less-bundle-promise"
   },
   "main": "dist/index.js",
   "files": [
     "dist"
   ],
-  "homepage": "https://github.com/mzohaibqc/less-bundle-promise",
+  "homepage": "https://github.com/ad2302/less-bundle-promise",
   "engines": {
     "node": ">=0.10.0"
   },
@@ -35,10 +35,10 @@
     "typescript": "^4.4.2"
   },
   "bugs": {
-    "url": "https://github.com/mzohaibqc/less-bundle-promise/issues"
+    "url": "https://github.com/ad2302/less-bundle-promise/issues"
   },
   "scripts": {
-    "build": "tsc --lib es2015,dom --outDir dist src/index.ts"
+    "build": "tsc --lib es2015,dom --esModuleInterop --outDir dist src/index.ts"
   },
   "publishConfig": {
     "access": "public"

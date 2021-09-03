@@ -9,7 +9,7 @@ function writeToFile(path: string, data: Array<string>) {
   return new Promise(function (resolve, reject) {
     try {
       var fd = fs.openSync(path, 'w'),
-        buffer = new Buffer(data.join('\n'), 'utf8');
+        buffer =  Buffer.from(data.join('\n'), 'utf8');
 
       fs.writeSync(fd, buffer, 0, buffer.length, 0);
       fs.closeSync(fd);
