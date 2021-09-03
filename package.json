@@ -1,11 +1,12 @@
 {
   "name": "@ad2302/less-bundle-promise",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "A package bundler for Less",
   "author": {
     "name": "ad2302",
     "url": "https://github.com/ad2302/less-bundle-promise"
   },
+  "type": "module",
   "module": "dist/less-bundle-promise.esm.js",
   "keywords": [
     "less",
