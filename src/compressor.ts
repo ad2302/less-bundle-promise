@@ -1,11 +1,11 @@
 ﻿import fs from "fs";
 import path from "path";
-import globals = require("./globals");
-import buildContents = require("./buildcontents");
-import generateOutput = require("./generateoutput");
-import mkdirp = require('mkdirp');
+import * as globals from "./globals";
+import { buildContents } from "./buildcontents";
+import { generateOutput } from "./generateoutput";
+import mkdirp from "mkdirp";
 import { promisify } from "util";
-import {pathExists} from 'path-exists';
+import { pathExists } from "path-exists";
 
 const openAsync = promisify(fs.open);
 const writeAsync = promisify(fs.write);
@@ -26,7 +26,7 @@ async function writeToFile(path: string, data: Array<string>) {
  * @param config The configuration for compressing the files.
  * when the task is complete.
  */
-async function compress(config?: globals.IConfig) {
+export async function compress(config: globals.IConfig) {
   globals.initialize(config);
 
   const src = path.resolve(globals.config.src),
@@ -39,7 +39,7 @@ async function compress(config?: globals.IConfig) {
   // Goes through each file in the dest files and makes sure they have a
   // .less extension.
   if (writeFile) {
-    dest.forEach((outFile, index) => {
+    dest?.forEach((outFile, index) => {
       const end = outFile.lastIndexOf(".");
       dest[index] = outFile.substring(0, end > -1 ? end : undefined) + ".less";
     });
@@ -95,7 +95,7 @@ async function compress(config?: globals.IConfig) {
   // Go through each destination file and make sure we can
   // write a file to the location, making new directories
   // if necessary. Then write the output to each destination.
-  if (writeFile) {
+  if (writeFile && dest) {
     await Promise.all(
       dest.map(async (destFile) => {
         const p = path.normalize(destFile);
@@ -111,4 +111,3 @@ async function compress(config?: globals.IConfig) {
   return output.join("\n");
 }
 
-export = compress;

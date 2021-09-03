@@ -1,23 +1,11 @@
-﻿class Writer {
-    private __lines: Array<string>;
+﻿export class Writer {
 
     /**
      * Creates a new Writer with the given lines.
      * 
      * @param lines The lines to set for the Writer.
      */
-    constructor(lines: Array<string>);
-
-    /**
-     * Creates a new Writer.
-     * 
-     * @param operator The array of lines to associate with this writer.
-     */
-    constructor(operator) {
-        if (Array.isArray(operator)) {
-            this.__lines = operator;
-            return;
-        }
+    constructor(private __lines:string[]) {
     }
 
     /**
@@ -45,5 +33,3 @@
         return previousLine;
     }
 }
-
-export = Writer;

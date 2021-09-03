@@ -1,21 +1,20 @@
-﻿
-import Writer = require('./writer');
+﻿import { Writer } from "./writer";
 
 export interface IConfig {
   /**
-   * The path to a LESS file that imports all the desired files 
+   * The path to a LESS file that imports all the desired files
    * in the order you wish them to be bundled in.
    */
   src: string;
 
   /**
-   * An array of destination file paths. Once the framework 
+   * An array of destination file paths. Once the framework
    * is built, it will be output to these paths.
    */
   dest?: Array<string>;
 
   /**
-   * Boolean flag to indicate that if we want the compiled css into dest file or not 
+   * Boolean flag to indicate that if we want the compiled css into dest file or not
    */
   writeFile?: boolean;
 
@@ -26,7 +25,7 @@ export interface IConfig {
 
   /**
    * The path to the license file to be added to the build as a
-   * comment. If a version is specified, the v.0.0.0 in the 
+   * comment. If a version is specified, the v.0.0.0 in the
    * license will be replaced with the version.
    */
   license?: string;
@@ -37,7 +36,7 @@ export interface IObject<T> {
 }
 
 function isString(obj: any): boolean {
-  return typeof obj === 'string';
+  return typeof obj === "string";
 }
 
 function isArray(obj: any): boolean {
@@ -48,11 +47,15 @@ function validate(config: IConfig): Array<string> {
   var errors: Array<string> = [];
 
   if (!(isString(config.src) && lessFileRegex.test(config.src))) {
-    errors.push('Error: src config property must be a string path locating the LESS file for the bundle');
+    errors.push(
+      "Error: src config property must be a string path locating the LESS file for the bundle"
+    );
   }
 
   if (config.writeFile && !isArray(config.dest)) {
-    errors.push('Error: dest config property must be a string or array of strings designating the output LESS file(s).');
+    errors.push(
+      "Error: dest config property must be a string or array of strings designating the output LESS file(s)."
+    );
   }
 
   return errors;
@@ -60,24 +63,26 @@ function validate(config: IConfig): Array<string> {
 
 /**
  * Creates the config.
- * 
+ *
  * @param cfg The root config.
  */
 export function initialize(cfg: IConfig) {
   if (!cfg) {
-    throw new Error('No config specified');
+    throw new Error("No config specified");
   }
   config = cfg;
 
-  if (typeof cfg.dest === 'string') {
-    config.dest = [<string><any>cfg.dest];
+  if (typeof cfg.dest === "string") {
+    config.dest = [<string>(<any>cfg.dest)];
   }
 
   var errors = validate(config);
 
   if (errors.length > 0) {
-    errors.forEach((error) => { console.log(error); });
-    throw new Error('Invalid config');
+    errors.forEach((error) => {
+      console.log(error);
+    });
+    throw new Error("Invalid config");
   }
 
   return config;
@@ -86,13 +91,10 @@ export function initialize(cfg: IConfig) {
 export var config: IConfig,
   writers: Array<Writer> = [],
   output: Array<string> = [],
-
   // hashes the import statements
   imports: IObject<boolean> = {},
-
   // Finds all the <script src="" /> tags
   hrefRegex = /href=("[^"]*)/,
-
   // Finds the start comment Node
   // startRegex = /<!--\s*less-bundle-start/,
 
@@ -101,9 +103,7 @@ export var config: IConfig,
 
   // Finds the string literal in a string
   stringLiteralRegex = /.*(?:'|")(.*)(?:'|").*/,
-
   // Tests for less file
   lessFileRegex = /.less$/,
-
   // Tests for css file
   cssFileRegex = /.css$/;

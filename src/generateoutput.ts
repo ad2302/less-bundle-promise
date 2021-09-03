@@ -1,4 +1,4 @@
-﻿import globals = require("./globals");
+﻿import * as globals from "./globals";
 
 const output = globals.output;
 
@@ -12,7 +12,7 @@ function removeEmptyStringsFromEnd(output: Array<string>) {
  * Iterates through writers and invokes their write
  * function, building the output array.
  */
-function generateOutput() {
+export function generateOutput() {
   const writers = globals.writers;
   let previousLine = "";
 
@@ -22,5 +22,3 @@ function generateOutput() {
 
   removeEmptyStringsFromEnd(output);
 }
-
-export = generateOutput;
