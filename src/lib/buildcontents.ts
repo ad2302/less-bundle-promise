@@ -1,7 +1,6 @@
-﻿/// <reference path="../typings/tsd.d.ts" />
-
-import fs = require('fs');
-import path = require('path');
+﻿
+import fs from 'fs';
+import path from 'path';
 import Writer = require('./writer');
 import globals = require('./globals');
 

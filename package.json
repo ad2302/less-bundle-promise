@@ -27,8 +27,8 @@
   "engines": {
     "node": ">=0.10.0"
   },
-  "dependencies": {},
   "devDependencies": {
+    "@types/node": "^16.7.10",
     "ts-loader": "^4.2.0",
     "typescript": "^2.8.1"
   },

@@ -1,7 +1,5 @@
-﻿/// <reference path="../typings/tsd.d.ts" />
-
+﻿
 import Writer = require('./writer');
-import path = require('path');
 
 export interface IConfig {
   /**
