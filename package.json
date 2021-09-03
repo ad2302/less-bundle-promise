@@ -1,6 +1,6 @@
 {
   "name": "@ad2302/less-bundle-promise",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "description": "A package bundler for Less",
   "author": {
     "name": "ad2302",
@@ -38,9 +38,13 @@
     "url": "https://github.com/ad2302/less-bundle-promise/issues"
   },
   "scripts": {
-    "build": "tsc --lib es2015,dom --esModuleInterop --outDir dist src/index.ts"
+    "prepublishOnly": "tsc --lib es2015,dom --esModuleInterop --outDir dist src/index.ts"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "mkdirp": "^1.0.4",
+    "path-exists": "^5.0.0"
   }
 }

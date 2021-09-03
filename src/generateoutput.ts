@@ -1,26 +1,26 @@
-﻿import globals = require('./globals');
+﻿import globals = require("./globals");
 
-var output = globals.output;
+const output = globals.output;
 
 function removeEmptyStringsFromEnd(output: Array<string>) {
-    while (!output[output.length - 1]) {
-        output.pop();
-    }
+  while (!output[output.length - 1]) {
+    output.pop();
+  }
 }
 
 /**
- * Iterates through writers and invokes their write 
+ * Iterates through writers and invokes their write
  * function, building the output array.
  */
 function generateOutput() {
-    var writers = globals.writers,
-        previousLine = '';
+  const writers = globals.writers;
+  let previousLine = "";
 
-    writers.forEach((writer) => {
-        previousLine = writer.write(output, previousLine);
-    });
+  writers.forEach((writer) => {
+    previousLine = writer.write(output, previousLine);
+  });
 
-    removeEmptyStringsFromEnd(output);
+  removeEmptyStringsFromEnd(output);
 }
 
 export = generateOutput;
