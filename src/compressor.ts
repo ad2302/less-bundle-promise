@@ -5,7 +5,7 @@ import { buildContents } from "./buildcontents";
 import { generateOutput } from "./generateoutput";
 import mkdirp from "mkdirp";
 import { promisify } from "util";
-import { pathExists } from "path-exists";
+import pathExists from "path-exists";
 
 const openAsync = promisify(fs.open);
 const writeAsync = promisify(fs.write);
