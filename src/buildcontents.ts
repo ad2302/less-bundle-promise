@@ -2,8 +2,10 @@
 import path from "path";
 import { Writer } from "./writer";
 import * as globals from "./globals";
+import { promisify } from "util";
+const readFileAsync = promisify(fs.readFile);
 
-export function buildContents(lines: Array<string>, filePath: string) {
+export async function buildContents(lines: Array<string>, filePath: string) {
   var writers = globals.writers,
     imports = globals.imports,
     lessRegex = globals.lessFileRegex,
@@ -42,7 +44,7 @@ export function buildContents(lines: Array<string>, filePath: string) {
       }
       if (typeof imports[hashPath] === "undefined") {
         imports[hashPath] = true;
-        file = fs.readFileSync(hashPath, "utf8");
+        file = await readFileAsync(hashPath, "utf8");
         splitLines = file.split(/\r\n|\n/);
         splitLines[0] = splitLines[0].trim();
         buildContents(splitLines, hashPath);

@@ -51,7 +51,7 @@ export async function compress(config: globals.IConfig) {
 
   const splitLines = data.split(/\r\n|\n/);
   splitLines[0] = splitLines[0].trim();
-  buildContents(splitLines, src);
+  await buildContents(splitLines, src);
 
   // generate the output
   generateOutput();
@@ -59,7 +59,7 @@ export async function compress(config: globals.IConfig) {
   // If a license file is specified, we want to prepend it to the output.
   if (license) {
     const licenseFile = path.resolve(license),
-      licenseData = fs.readFileSync(licenseFile, "utf8"),
+      licenseData = await readFileAsync(licenseFile, "utf8"),
       lines = licenseData.split(/\r\n|\n/),
       regex = /(.*)v\d+\.\d+\.\d+(.*)/;
 
